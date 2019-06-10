@@ -1,0 +1,9 @@
+# All hidden files/directories
+.venv
+.idea
+
+# Python stuff
+__pycache__
+
+# Local environment (for local tests)
+local.env

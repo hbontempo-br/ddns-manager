@@ -1,0 +1,8 @@
+# All hidden files/directories
+.*
+
+# Python stuff
+__pycache__
+
+# Local environment (for local tests)
+local.env
