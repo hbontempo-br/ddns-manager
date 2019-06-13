@@ -1,7 +1,9 @@
+from src.helper.environment import get_environment_variable
 import os
 
-USERNAME = os.environ.get("USERNAME")
-PASSWORD = os.environ.get("PASSWORD")
-HOSTNAME = os.environ.get("HOSTNAME")
 
-UPDATE_DELAY = int(os.environ.get("UPDATE_DELAY", 10))
+USERNAME = get_environment_variable("USERNAME")
+PASSWORD = get_environment_variable("PASSWORD")
+HOSTNAME = get_environment_variable("HOSTNAME")
+
+UPDATE_DELAY = int(get_environment_variable("UPDATE_DELAY", 10))
