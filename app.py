@@ -7,6 +7,8 @@ from retry import retry
 
 from constants import *
 
+from src.helper.environment import get_environment_variable
+
 logging.basicConfig(level=logging.DEBUG)
 
 
