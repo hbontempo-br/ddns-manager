@@ -20,6 +20,7 @@ logger = setup_console_logging(
     logger_date_time_format
 )
 
+
 def validate_google_response(response: Response):
     response.raise_for_status()
     if not ("good" in response.text or "nochg" in response.text):
@@ -30,14 +31,14 @@ def validate_google_response(response: Response):
 def update_routine(username: str, password: str, hostname: str, ip: str):
     new_ip = get_ip()
     logging.debug(f"External IP: {new_ip}")
-    if new_ip != ip:
-        url = f"https://{username}:{password}@domains.google.com/nic/update?hostname={hostname}&myip={new_ip}"
-        response = get(url)
-        validate_google_response(response=response)
-        logging.debug(f"Record updated: {ip} > {new_ip}")
-        return new_ip
-    return ip
+    if new_ip == ip:
+        return ip
 
+    url = f"https://{username}:{password}@domains.google.com/nic/update?hostname={hostname}&myip={new_ip}"
+    response = get(url)
+    validate_google_response(response=response)
+    logging.debug(f"Record updated: {ip} > {new_ip}")
+    return new_ip
 
 ip = ""
 logging.debug("Starting application")
