@@ -9,25 +9,38 @@ Originally designed by **[Henrique Bontempo][author]**.
 
 ## The problem
 
-If you want to access you home network through a VPN, host your own website, host a game server, have remote access to our security cameras or any other task that you have to access your home network from the internet you must have to locate it .
+If you want to access you home network through a VPN, host your own website, host a game server, have remote access to 
+our security cameras or any other task that you have to access your home network from the internet you must have to 
+locate it .
 
-The most direct way is through your public IP , and it's easy if you have a static IP, but they are expensive and for many regions almost exclusive to business. If your ISP won't provide static IP on your location or you don't want to pay for it than you are stuck with a dynamic IP. You still can reach your home through your external IP, but there are no guarantees that this address won't change without a notice.
+The most direct way is through your public IP , and it's easy if you have a static IP, but they are expensive and for 
+many regions almost exclusive to business. If your ISP won't provide static IP on your location or you don't want to 
+pay for it than you are stuck with a dynamic IP. You still can reach your home through your external IP, but there are 
+no guarantees that this address won't change without a notice.
 
-To circumvent this problem the most common idea is to use a url address that is constantly updated your external IP. You can hire a service for this like [no-ip](https://www.noip.com) and they do a grate job, but if you want advance control or even some simple things like using your custom domain are paid and sometimes even require you to transfer your domain their platform.
+To circumvent this problem the most common idea is to use a url address that is constantly updated your external IP. 
+You can hire a service for this like [no-ip](https://www.noip.com) and they do a grate job, but if you want advance 
+control or even some simple things like using your custom domain are paid and sometimes even require you to transfer 
+your domain their platform.
 
-Referenciar artigo de inspiração
+[TODO] Put reference to inspiration article.
 
 ## Objective
 
-This project have a direct purpose: with just a domain in Google Domains keep a subdomain pointing to your home without worring with static IP or ane other paid service. Just a small script running on your computer.
+This project have a direct purpose: with just a domain in Google Domains keep a subdomain pointing to your home without 
+worrying with static IP or ane other paid service. Just a small script running on your computer.
 
-It's meant to do a simple and very specific function: monitor changes on it's current external IP and, if a change is noticed, update the domain on Google Domains Synthetic Records.
+It's meant to do a simple and very specific function: monitor changes on it's current external IP and, if a change is 
+noticed, update the domain on Google Domains Synthetic Records.
 
 ## Getting Started
 
 ### Before you start
 
-You must have a domain in Google Domain (if you don't have one you can [buy one](https://support.google.com/domains/answer/4491208?hl=en) or [transfer your domain](https://support.google.com/domains/answer/9003139?hl=en)) and must set up a Dynamic DNS synthetic record a get it's credentials (detailed steps: https://support.google.com/domains/answer/6147083?hl=en).
+You must have a domain in Google Domain (if you don't have one you can 
+[buy one](https://support.google.com/domains/answer/4491208?hl=en) or 
+[transfer your domain](https://support.google.com/domains/answer/9003139?hl=en)) and must set up a Dynamic DNS 
+synthetic record a get it's credentials (detailed steps: https://support.google.com/domains/answer/6147083?hl=en).
 
 ### Clone
 
@@ -52,20 +65,20 @@ Check [clone with ssh][git_clone_ssh] for further information.
 
 ### Run script
 
-Install requirements
+Install dependencys:
 
-##### Pip
+With pip:
 ```bash
     $ pip3 install requirements.txt
 ```
 
-##### Pipenv
+... or with pipenv: [TODO]
 
 ```bash
     $ echo 'instructions'
 ```
 
-Make sure you have the following envinronment variables set:
+Make sure you have the following environment variables set:
 - USERNAME=<your_domains_username>
 - PASSWORD=<your_domains_password>
 - USERNAME=<your_domain>
@@ -77,7 +90,7 @@ Then just run the [app.py](app.py):
     $ python3 app.py
 ```
 
-### Test
+### Test [TODO]
 
 :construction: :construction: :construction: :construction: :construction:
 Testing this project requires **...**, instructions provided below.
@@ -88,26 +101,35 @@ Testing this project requires **...**, instructions provided below.
 
 ### Build Docker Image
 
-:construction: :construction: :construction: :construction: :construction:
-Building this project requires **...**, instructions provided below.
-
+The latest image of this project can be found on in 
+[DockerHub](https://cloud.docker.com/u/hbontempo/repository/docker/hbontempo/dynamic-ip-updater-google-domains), 
+but you can build it yourself:
 ```bash
-    $ echo 'instructions'
+    $ docker build -t dynamic-ip-updater-google-domains -f Dockerfile .
 ```
 
-### Pack
+### Docker run
+
+**It the recommended way**, just use the environment variables described above:
+
+```bash
+    $ docker run \
+        -e USERNAME=<your_domains_username> \
+        -e PASSWORD=<your_domains_password> \
+        -e USERNAME=<your_domain> \
+        -e UPDATE_DELAY=<[optional]seconds_between_verifications> \
+        --restart-policy=always \
+        -d
+        hbontempo/dynamic-ip-updater-google-domains
+```
+
+It's a good practice to run your this container with a `--restart-policy=always` as showed above so your container 
+starts running again even if a problem happens.
+
+### Pack [TODO]
 
 :construction: :construction: :construction: :construction: :construction:
 Packing this project requires **...**, instructions provided below.
-
-```bash
-    $ echo 'instructions'
-```
-
-### Deploy
-
-:construction: :construction: :construction: :construction: :construction:
-Deploying this project requires **...**, instructions provided below.
 
 ```bash
     $ echo 'instructions'
