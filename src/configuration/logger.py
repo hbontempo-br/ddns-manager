@@ -1,8 +1,8 @@
 import logging
 
 
-CONSOLE_LOGGER="console"
-FILE_LOGGER="file"
+CONSOLE_LOGGER = "console"
+FILE_LOGGER = "file"
 
 
 def setup_console_logging(level, formatter, date_time_format):

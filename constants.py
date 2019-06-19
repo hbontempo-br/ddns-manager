@@ -1,6 +1,4 @@
 from src.helper.environment import get_environment_variable
-import os
-
 
 USERNAME = get_environment_variable("USERNAME")
 PASSWORD = get_environment_variable("PASSWORD")
