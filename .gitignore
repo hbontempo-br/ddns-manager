@@ -2,6 +2,10 @@
 .venv
 .idea
 
+# Other
+[Llog]
+.[Llog]
+
 # Python stuff
 __pycache__
 

@@ -1,5 +1,0 @@
-%(asctime)s - %(levelname)s - %(message)s
-%(asctime)s - %(levelname)s - %(message)s
-%(asctime)s - %(levelname)s - %(message)s
-2019-06-17 20:43:04,907 - INFO - Log Works!
-2019-06-17 20:47:01,616 - INFO - Log Works!
