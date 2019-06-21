@@ -65,7 +65,7 @@ Check [clone with ssh][git_clone_ssh] for further information.
 
 ### Run script
 
-Install dependencys:
+Install dependencies (setting up a virtual environment is recommended):
 
 With pip:
 ```bash
@@ -81,7 +81,7 @@ With pip:
 Make sure you have the following environment variables set:
 - USERNAME=<your_domains_username>
 - PASSWORD=<your_domains_password>
-- USERNAME=<your_domain>
+- HOSTNAME=<your_domain>
 - UPDATE_DELAY=<[optional]seconds_between_verifications>
 
 Then just run the [app.py](app.py):
@@ -99,7 +99,9 @@ Testing this project requires **...**, instructions provided below.
     $ echo 'instructions'
 ```
 
-### Build Docker Image
+## Running on Docker
+
+### Build
 
 The latest image of this project can be found on in 
 [DockerHub](https://cloud.docker.com/u/hbontempo/repository/docker/hbontempo/dynamic-ip-updater-google-domains), 
@@ -108,7 +110,7 @@ but you can build it yourself:
     $ docker build -t dynamic-ip-updater-google-domains -f Dockerfile .
 ```
 
-### Docker run
+### Run
 
 **It the recommended way**, just use the environment variables described above:
 
@@ -116,17 +118,16 @@ but you can build it yourself:
     $ docker run \
         -e USERNAME=<your_domains_username> \
         -e PASSWORD=<your_domains_password> \
-        -e USERNAME=<your_domain> \
+        -e HOSTNAME=<your_domain> \
         -e UPDATE_DELAY=<[optional]seconds_between_verifications> \
-        --restart-policy=always \
-        -d
-        hbontempo/dynamic-ip-updater-google-domains
+        --restart=always \
+        -d hbontempo/dynamic-ip-updater-google-domains
 ```
 
-It's a good practice to run your this container with a `--restart-policy=always` as showed above so your container 
+It's a good practice to run your this container with a `--restart=always` as showed above so your container 
 starts running again even if a problem happens.
 
-### Pack [TODO]
+## Pack [TODO]
 
 :construction: :construction: :construction: :construction: :construction:
 Packing this project requires **...**, instructions provided below.
