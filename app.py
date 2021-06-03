@@ -1,7 +1,6 @@
 import logging
 import time
 
-from ipify import get_ip
 from requests import get, Response
 from retry import retry
 
@@ -36,7 +35,7 @@ def update_routine(username: str, password: str, hostname: str, ip: str):
         if not ("good" in response.text or "nochg" in response.text):
             raise Exception(f"Bad response: {response.text}")
 
-    new_ip = get_ip()
+    new_ip = get('https://api.ipify.org').text
     if new_ip == ip:
         logger.info(f"Current address is up to date, nothing to do ({new_ip}).")
         return ip

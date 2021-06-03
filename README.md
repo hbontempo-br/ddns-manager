@@ -72,12 +72,6 @@ With pip:
     $ pip3 install requirements.txt
 ```
 
-... or with pipenv: [TODO]
-
-```bash
-    $ echo 'instructions'
-```
-
 Make sure you have the following environment variables set:
 - USERNAME=<your_domains_username>
 - PASSWORD=<your_domains_password>
