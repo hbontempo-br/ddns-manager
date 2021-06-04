@@ -12,10 +12,8 @@ jobs:
     steps:
       - checkout
       - python/install-packages:
-          name: install dependencies
           pkg-manager: pip
       - python/install-packages:
-          name: install development dependencies
           pkg-manager: pip
           pip-dependency-file: requirements_dev.txt
       - run:
