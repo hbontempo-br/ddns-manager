@@ -1,4 +1,4 @@
-from src.helper.environment import get_environment_variable
+from ddns_domain_updater.helper.environment import get_environment_variable
 
 USERNAME = get_environment_variable("USERNAME")
 PASSWORD = get_environment_variable("PASSWORD")

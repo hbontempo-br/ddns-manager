@@ -4,8 +4,8 @@ import time
 from requests import get, Response
 from retry import retry
 
-from constants import *
-from src.configuration.logger import setup_console_logging
+from ddns_domain_updater.constants import *
+from ddns_domain_updater.helper.logger import setup_console_logging
 
 # CONFIGURES LOGGER
 logger_format = "%(asctime)s | %(levelname)s - %(message)s"

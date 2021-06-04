@@ -1,4 +1,7 @@
 # dynamic-ip-updater-google-domains
+[![ci](https://circleci.com/gh/hbontempo-br/dynamic-ip-updater-google-domains.svg?style=shield)](https://circleci.com/gh/hbontempo-br/dynamic-ip-updater-google-domains) 
+[![codecov](https://codecov.io/gh/hbontempo-br/dynamic-ip-updater-google-domains/branch/master/graph/badge.svg)](https://codecov.io/gh/hbontempo-br/dynamic-ip-updater-google-domains)
+
 Easily keep your Google Domains Synthetic Record up to date with your Dynamic IP.
 
 
@@ -78,19 +81,18 @@ Make sure you have the following environment variables set:
 - HOSTNAME=<your_domain>
 - UPDATE_DELAY=<[optional]seconds_between_verifications>
 
-Then just run the [app.py](app.py):
+Then just run the [app.py](ddns_domain_updater/app.py):
 
 ```bash
     $ python3 app.py
 ```
 
-### Test [TODO]
+### Test
 
-:construction: :construction: :construction: :construction: :construction:
-Testing this project requires **...**, instructions provided below.
+No secret here:
 
 ```bash
-    $ echo 'instructions'
+    $ python -m unittest discover
 ```
 
 ## Running on Docker
@@ -120,15 +122,6 @@ but you can build it yourself:
 
 It's a good practice to run your this container with a `--restart=always` as showed above so your container 
 starts running again even if a problem happens.
-
-## Pack [TODO]
-
-:construction: :construction: :construction: :construction: :construction:
-Packing this project requires **...**, instructions provided below.
-
-```bash
-    $ echo 'instructions'
-```
 
 ## Contributors
 
