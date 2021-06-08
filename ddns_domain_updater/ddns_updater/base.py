@@ -7,4 +7,4 @@ class DDNSUpdater(ABC):
 
     @abstractmethod
     def update_ddns_record(self, ip: str) -> None:
-        raise NotImplemented
+        raise NotImplementedError
