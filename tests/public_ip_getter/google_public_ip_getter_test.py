@@ -18,20 +18,21 @@ class ResponseMock:
 
 class TestGooglePublicIpGetter(unittest.TestCase):
     def test_getter_uses_correct_address(self):
-        def get(actual: str):
+        def req(method: str, url: str):
             expected = GooglePublicIpGetter.url
-            self.assertEqual(expected, actual)
+            self.assertEqual('get', method)
+            self.assertEqual(expected, url)
             return ResponseMock(status_code=200, text='whatever')
 
-        pig = GooglePublicIpGetter(getter=get)
+        pig = GooglePublicIpGetter(req=req)
         pig.get_current_ip()
 
     def test_get_current_ip_raises_error_if_get_fails(self):
-        pig = GooglePublicIpGetter(getter=lambda x: ResponseMock(status_code=400, text='whatever'))
+        pig = GooglePublicIpGetter(req=lambda method, url: ResponseMock(status_code=400, text='whatever'))
         self.assertRaises(PublicIPGetterError, pig.get_current_ip)
 
     def test_get_current_ip_returns_getter_response_if_get_succeeds(self):
         get_response = 'whatever'
-        pig = GooglePublicIpGetter(getter=lambda x: ResponseMock(status_code=200, text=get_response))
+        pig = GooglePublicIpGetter(req=lambda method, url: ResponseMock(status_code=200, text=get_response))
         resp = pig.get_current_ip()
         self.assertEqual(get_response, resp)
