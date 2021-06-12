@@ -1,10 +1,10 @@
-from inspect import formatargspec, getfullargspec
-from typing import Any, Callable, Set
+from inspect import signature
+from typing import Callable
 
 
 def is_abstract(callable: Callable) -> bool:
     return callable.__isabstractmethod__
 
 
-def arguments(callable: Callable) -> str:
-    return formatargspec(*getfullargspec(callable))
+def callable_signature(callable: Callable) -> str:
+    return str(signature(callable))

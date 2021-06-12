@@ -16,4 +16,4 @@ class TestDDNSUpdater(unittest.TestCase):
         self.assertTrue(is_abstract(method))
 
         # checks method signature
-        self.assertEqual('(self, ip: str) -> None', arguments(method))
+        self.assertEqual('(self, ip: str) -> None', callable_signature(method))

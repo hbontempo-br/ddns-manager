@@ -1,9 +1,11 @@
 from abc import ABC, abstractmethod
 
 
+class DDNSUpdaterError(Exception):
+    pass
+
+
 class DDNSUpdater(ABC):
-    class DDNSUpdaterError(Exception):
-        pass
 
     @abstractmethod
     def update_ddns_record(self, ip: str) -> None:

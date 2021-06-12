@@ -1,1 +1,2 @@
 from .public_ip_getter_test import TestPublicIpGetter
+from .google_public_ip_getter_test import TestGooglePublicIpGetter

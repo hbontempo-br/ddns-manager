@@ -16,4 +16,4 @@ class TestPublicIpGetter(unittest.TestCase):
         self.assertTrue(is_abstract(method))
 
         # checks method signature
-        self.assertEqual('(self) -> str', arguments(method))
+        self.assertEqual('(self) -> str', callable_signature(method))

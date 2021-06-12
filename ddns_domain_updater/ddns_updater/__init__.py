@@ -1,1 +1,1 @@
-from .base import DDNSUpdater
+from .base import DDNSUpdater, DDNSUpdaterError
