@@ -19,7 +19,7 @@ class ResponseMock:
 class TestGooglePublicIpGetter(unittest.TestCase):
     def test_getter_uses_correct_address(self):
         def req(method: str, url: str):
-            expected = GooglePublicIpGetter.url
+            expected = GooglePublicIpGetter.base_url
             self.assertEqual('get', method)
             self.assertEqual(expected, url)
             return ResponseMock(status_code=200, text='whatever')
