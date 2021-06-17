@@ -12,16 +12,16 @@ class GoogleSyntheticDDNSUpdater(DDNSUpdater):
         self._hostname = hostname
 
     def update_ddns_record(self, ip: str) -> None:
-        resp = self._req(method='post', url=self._format_address(), params=self._params(ip))
+        resp = self._req(method='post', url=self.__format_address(), params=self.__params(ip))
         if resp.status_code != 200:
-            raise DDNSUpdaterError
+            raise DDNSUpdaterError(f'Error on Google Synthetic Record update (status code: {resp.status_code})')
         if not (resp.text.startswith('good') or resp.text.startswith('nochg')):
-            raise DDNSUpdaterError
+            raise DDNSUpdaterError(f'Error on Google Synthetic Record update (text: {resp.text})')
 
-    def _format_address(self):
+    def __format_address(self):
         return f"https://{self._username}:{self._password}@{self.__class__.base_url}"
 
-    def _params(self, ip: str):
+    def __params(self, ip: str):
         return {
             'hostname': self._hostname,
             'myip': ip
