@@ -1,8 +1,8 @@
 import unittest
 from typing import Callable
-from ddns_domain_updater.public_ip_update_manager import PublicIpUpdateManager
-from ddns_domain_updater.ddns_updater import DDNSUpdater
-from ddns_domain_updater.public_ip_getter import PublicIPGetter
+from ddns_manager import DDNSManager
+from ddns_manager.ddns_updater import DDNSUpdater
+from ddns_manager.public_ip_getter import PublicIPGetter
 
 
 class MockPublicIPGetter(PublicIPGetter):
@@ -53,14 +53,14 @@ class CallRecorder:
         return self.ret
 
 
-class TestPublicIpUpdateManager(unittest.TestCase):
+class TestDDNSManager(unittest.TestCase):
 
     def test_current_ip_should_always_be_up_to_date(self):
         # current_ip should mimic value returned on PublicIPGetter#get_current_ip()
         ip1 = 'ip1'
         mock_pig = MockPublicIPGetter(get_current_ip_action=lambda: ip1)
         mock_du = MockDDNSUpdater(update_ddns_record_action=lambda: None)
-        pium = PublicIpUpdateManager(
+        pium = DDNSManager(
             ip_getter=mock_pig,
             ddns_updater=mock_du
         )
@@ -79,7 +79,7 @@ class TestPublicIpUpdateManager(unittest.TestCase):
 
         self.assertEqual(0, mc.count)
 
-        PublicIpUpdateManager(
+        DDNSManager(
             ip_getter=mock_pig,
             ddns_updater=mock_du
         )
@@ -89,7 +89,7 @@ class TestPublicIpUpdateManager(unittest.TestCase):
         # is_ddns_outdated should return False if current_ip != ddns_ip
         # is_ddns_outdated should return True if current_ip == ddns_ip
         test_ip = 'test_ip'
-        pium = PublicIpUpdateManager(
+        pium = DDNSManager(
             ip_getter=MockPublicIPGetter(get_current_ip_action=lambda: test_ip),
             ddns_updater=MockDDNSUpdater(update_ddns_record_action=lambda ip: None)
         )
@@ -118,7 +118,7 @@ class TestPublicIpUpdateManager(unittest.TestCase):
         mock_pig = MockPublicIPGetter(get_current_ip_action=lambda: test_ip)
         mock_du = MockDDNSUpdater(update_ddns_record_action=lambda ip: None)
 
-        pium = PublicIpUpdateManager(
+        pium = DDNSManager(
             ip_getter=mock_pig,
             ddns_updater=mock_du
         )
@@ -136,7 +136,7 @@ class TestPublicIpUpdateManager(unittest.TestCase):
 
     def test_ddns_ip_initialization(self):
         # ddns_ip should be initialized with None value
-        pium = PublicIpUpdateManager(
+        pium = DDNSManager(
             ip_getter=MockPublicIPGetter(get_current_ip_action=lambda: 'whatever'),
             ddns_updater=MockDDNSUpdater(update_ddns_record_action=lambda ip: None)
         )
@@ -145,7 +145,7 @@ class TestPublicIpUpdateManager(unittest.TestCase):
     def test_ddns_ip_update_with_update_ip_false(self):
         # ddns_ip should be equal to #current_ip after #update_ddns without a update_current_ip
         test_ip = 'test_ip'
-        pium = PublicIpUpdateManager(
+        pium = DDNSManager(
             ip_getter=MockPublicIPGetter(get_current_ip_action=lambda: test_ip),
             ddns_updater=MockDDNSUpdater(update_ddns_record_action=lambda ip: None)
         )
@@ -156,7 +156,7 @@ class TestPublicIpUpdateManager(unittest.TestCase):
     def test_ddns_ip_update_with_update_ip_true(self):
         # ddns_ip should be equal to #current_ip after #update_ddns with a update_current_ip
         test_ip = 'test_ip'
-        pium = PublicIpUpdateManager(
+        pium = DDNSManager(
             ip_getter=MockPublicIPGetter(get_current_ip_action=lambda: test_ip),
             ddns_updater=MockDDNSUpdater(update_ddns_record_action=lambda ip: None)
         )
@@ -170,7 +170,7 @@ class TestPublicIpUpdateManager(unittest.TestCase):
         mock_pig = MockPublicIPGetter(get_current_ip_action=lambda: test_ip)
         mock_du = MockDDNSUpdater(update_ddns_record_action=lambda ip: None)
 
-        pium = PublicIpUpdateManager(
+        pium = DDNSManager(
             ip_getter=mock_pig,
             ddns_updater=mock_du
         )
@@ -190,7 +190,7 @@ class TestPublicIpUpdateManager(unittest.TestCase):
         mock_pig = MockPublicIPGetter(get_current_ip_action=lambda: test_ip)
         mock_du = MockDDNSUpdater(update_ddns_record_action=lambda ip: None)
 
-        pium = PublicIpUpdateManager(
+        pium = DDNSManager(
             ip_getter=mock_pig,
             ddns_updater=mock_du
         )
@@ -210,7 +210,7 @@ class TestPublicIpUpdateManager(unittest.TestCase):
         mock_pig = MockPublicIPGetter(get_current_ip_action=lambda: "whatever")
         mock_du = MockDDNSUpdater(update_ddns_record_action=mc)
 
-        pium = PublicIpUpdateManager(
+        pium = DDNSManager(
             ip_getter=mock_pig,
             ddns_updater=mock_du
         )
@@ -231,7 +231,7 @@ class TestPublicIpUpdateManager(unittest.TestCase):
         mock_pig = MockPublicIPGetter(get_current_ip_action=lambda: "whatever")
         mock_du = MockDDNSUpdater(update_ddns_record_action=mc)
 
-        pium = PublicIpUpdateManager(
+        pium = DDNSManager(
             ip_getter=mock_pig,
             ddns_updater=mock_du
         )

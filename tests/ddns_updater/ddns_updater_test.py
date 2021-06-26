@@ -1,7 +1,7 @@
 import unittest
 
 from tests.common import *
-from ddns_domain_updater.ddns_updater import DDNSUpdater
+from ddns_manager.ddns_updater import DDNSUpdater
 
 
 class TestDDNSUpdater(unittest.TestCase):

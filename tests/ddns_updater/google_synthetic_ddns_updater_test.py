@@ -1,5 +1,5 @@
 import unittest
-from ddns_domain_updater.ddns_updater import DDNSUpdaterError, GoogleSyntheticDDNSUpdater
+from ddns_manager.ddns_updater import DDNSUpdaterError, GoogleSyntheticDDNSUpdater
 
 
 class ResponseMock:

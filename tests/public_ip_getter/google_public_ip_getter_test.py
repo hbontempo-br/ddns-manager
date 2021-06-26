@@ -1,5 +1,5 @@
 import unittest
-from ddns_domain_updater.public_ip_getter import GooglePublicIpGetter, PublicIPGetterError
+from ddns_manager.public_ip_getter import GooglePublicIpGetter, PublicIPGetterError
 
 
 class ResponseMock:

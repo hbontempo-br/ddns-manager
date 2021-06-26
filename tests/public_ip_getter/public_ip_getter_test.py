@@ -1,7 +1,7 @@
 import unittest
 
 from tests.common import *
-from ddns_domain_updater.public_ip_getter import PublicIPGetter
+from ddns_manager.public_ip_getter import PublicIPGetter
 
 
 class TestPublicIpGetter(unittest.TestCase):

@@ -10,6 +10,6 @@ ADD requirements.txt /$PROJECT_NAME
 RUN pip3 install -r /$PROJECT_NAME/requirements.txt
 
 #Deploy of code
-ADD ./ddns_domain_updater /$PROJECT_NAME
+ADD ddns_manager /$PROJECT_NAME
 
 CMD python3 ./app.py

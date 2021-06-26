@@ -3,11 +3,11 @@ import time
 
 from typing import Callable
 
-from ddns_domain_updater.public_ip_getter import PublicIPGetter
-from ddns_domain_updater.ddns_updater import DDNSUpdater
+from ddns_manager.public_ip_getter import PublicIPGetter
+from ddns_manager.ddns_updater import DDNSUpdater
 
 
-class PublicIpUpdateManager:
+class DDNSManager:
     def __init__(self, ip_getter: PublicIPGetter, ddns_updater: DDNSUpdater):
         self.__ddns_updater = ddns_updater
         self.__ip_getter = ip_getter

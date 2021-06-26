@@ -81,7 +81,7 @@ Make sure you have the following environment variables set:
 - HOSTNAME=<your_domain>
 - UPDATE_DELAY=<[optional]seconds_between_verifications>
 
-Then just run the [app.py](ddns_domain_updater/app.py):
+Then just run the [app.py](app.py):
 
 ```bash
     $ python3 app.py
