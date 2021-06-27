@@ -1,10 +1,9 @@
 import logging
 import time
-
 from typing import Callable
 
-from ddns_manager.public_ip_getter import PublicIPGetter
 from ddns_manager.ddns_updater import DDNSUpdater
+from ddns_manager.public_ip_getter import PublicIPGetter
 
 
 class DDNSManager:
@@ -33,7 +32,7 @@ class DDNSManager:
         if self.is_ddns_outdated(update_current_ip=update_current_ip):
             self.__update_ddns()
 
-    def update_loop(self, interval: int, on_error: Callable[[Exception], None] = lambda e: logging.error(f'Error: {e}')):
+    def update_loop(self, interval: int, on_error: Callable[[Exception], None]):
         while True:
             try:
                 logging.info('Starting new update routine.')

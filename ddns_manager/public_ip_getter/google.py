@@ -1,5 +1,6 @@
-from .base import PublicIPGetter, PublicIPGetterError
 from requests import request
+
+from .base import PublicIPGetter, PublicIPGetterError
 
 
 class GooglePublicIpGetter(PublicIPGetter):

@@ -2,6 +2,7 @@
 branch = True
 omit =
     tests/*
+    .venv/*
 
 [report]
 exclude_lines =

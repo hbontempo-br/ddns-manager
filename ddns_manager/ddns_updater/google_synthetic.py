@@ -1,5 +1,6 @@
-from .base import DDNSUpdater, DDNSUpdaterError
 from requests import request
+
+from .base import DDNSUpdater, DDNSUpdaterError
 
 
 class GoogleSyntheticDDNSUpdater(DDNSUpdater):

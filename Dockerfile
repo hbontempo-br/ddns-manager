@@ -12,4 +12,5 @@ RUN pip3 install -r /$PROJECT_NAME/requirements.txt
 #Deploy of code
 ADD ddns_manager /$PROJECT_NAME
 
-CMD python3 ./app.py
+ENV YAML /config/config.yml
+CMD python3 -m ddns_manager loop $YAML
