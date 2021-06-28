@@ -18,6 +18,6 @@ def factory(type_str: str) -> Type[ErrorHandlerType]:
     if type_str not in selector:
         expected = selector.keys()
         expected_str = ', '.join(expected)
-        raise AttributeError(f'Invalid on_error_behaviour type (used: {type_str} / expected: [{expected_str}]')
+        raise AttributeError(f'Invalid on_error_behaviour type (used: {type_str} / expected: [{expected_str}])')
 
     return selector[type_str]

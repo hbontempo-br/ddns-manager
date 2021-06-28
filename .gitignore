@@ -13,4 +13,4 @@ __pycache__
 local.env
 .coverage
 coverage.xml
-example.yml
+config

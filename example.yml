@@ -1,0 +1,12 @@
+version: 0.1.0
+public_ip_getter:
+  type: google
+ddns_updater:
+  type: google_synthetic
+  details:
+    username: USERNAME
+    password: PASSWORD
+    hostname: HOSTNAME
+check_interval: 600
+on_error_behaviour:
+  type: retry

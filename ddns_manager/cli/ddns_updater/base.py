@@ -13,11 +13,11 @@ def ddns_updater(config: Dict) -> DDNSUpdater:
 
 def factory(type_str: str) -> Type[DDNSUpdaterConfigHelper]:
     selector = {
-        'google': GoogleSyntheticDDNSConfigHelper
+        'google_synthetic': GoogleSyntheticDDNSConfigHelper
     }
     if type_str not in selector:
         expected = selector.keys()
         expected_str = ', '.join(expected)
-        raise AttributeError(f'Invalid ddns_updater type (used: {type_str} / expected: [{expected_str}]')
+        raise AttributeError(f'Invalid ddns_updater type (used: {type_str} / expected: [{expected_str}])')
 
     return selector[type_str]
