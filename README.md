@@ -1,12 +1,11 @@
-# dynamic-ip-updater-google-domains
-[![ci](https://circleci.com/gh/hbontempo-br/dynamic-ip-updater-google-domains.svg?style=shield)](https://circleci.com/gh/hbontempo-br/dynamic-ip-updater-google-domains) 
-[![codecov](https://codecov.io/gh/hbontempo-br/dynamic-ip-updater-google-domains/branch/master/graph/badge.svg)](https://codecov.io/gh/hbontempo-br/dynamic-ip-updater-google-domains)
+# ddns-manager
+[![ci](https://circleci.com/gh/hbontempo-br/ddns-manager.svg?style=shield)](https://circleci.com/gh/hbontempo-br/ddns-manager) 
+[![codecov](https://codecov.io/gh/hbontempo-br/ddns-manager/branch/master/graph/badge.svg)](https://codecov.io/gh/hbontempo-br/ddns-manager)
 
-Easily keep your Google Domains Synthetic Record up to date with your Dynamic IP.
+Easily keep your DNS records up to date with your Dynamic IP.
 
-
-**dynamic-ip-updater-google-domains** is a small and easy project made with python3 that intents to help you keep
-your Google Domains Synthetic Record pointing to your machine when you have a dynamic IP from your ISP.
+**ddns-manager** is a small and easy project made with python3 that intents to help you keep
+your DNS records pointing to your machine when you have a dynamic IP from your ISP.
 
 Originally designed by **[Henrique Bontempo][author]**.
 
@@ -22,28 +21,12 @@ pay for it than you are stuck with a dynamic IP. You still can reach your home t
 no guarantees that this address won't change without a notice.
 
 To circumvent this problem the most common idea is to use a url address that is constantly updated your external IP. 
-You can hire a service for this like [no-ip](https://www.noip.com) and they do a grate job, but if you want advance 
-control or even some simple things like using your custom domain are paid and sometimes even require you to transfer 
-your domain their platform.
-
-[TODO] Put reference to inspiration article.
 
 ## Objective
 
-This project have a direct purpose: with just a domain in Google Domains keep a subdomain pointing to your home without 
-worrying with static IP or ane other paid service. Just a small script running on your computer.
-
-It's meant to do a simple and very specific function: monitor changes on it's current external IP and, if a change is 
-noticed, update the domain on Google Domains Synthetic Records.
+This project have a direct purpose: a simple and easy way of managing your DDNS.
 
 ## Getting Started
-
-### Before you start
-
-You must have a domain in Google Domain (if you don't have one you can 
-[buy one](https://support.google.com/domains/answer/4491208?hl=en) or 
-[transfer your domain](https://support.google.com/domains/answer/9003139?hl=en)) and must set up a Dynamic DNS 
-synthetic record a get it's credentials (detailed steps: https://support.google.com/domains/answer/6147083?hl=en).
 
 ### Clone
 
@@ -54,7 +37,7 @@ Cloning this project requires [git][git], instructions provided below.
 Check [clone with https][git_clone_https] for further information.
 
 ```bash
-    $ git clone https://github.com/hbontempo-br/dynamic-ip-updater-google-domains.git
+    $ git clone https://github.com/hbontempo-br/ddns-manager.git
 ```
 
 #### Option 2: SSH
@@ -62,7 +45,7 @@ Check [clone with https][git_clone_https] for further information.
 Check [clone with ssh][git_clone_ssh] for further information.
 
 ```bash
-    $ git clone git@github.com:hbontempo-br/dynamic-ip-updater-google-domains.git
+    $ git clone git@github.com:hbontempo-br/ddns-manager.git
 ```
 
 
@@ -75,16 +58,10 @@ With pip:
     $ pip3 install requirements.txt
 ```
 
-Make sure you have the following environment variables set:
-- USERNAME=<your_domains_username>
-- PASSWORD=<your_domains_password>
-- HOSTNAME=<your_domain>
-- UPDATE_DELAY=<[optional]seconds_between_verifications>
-
-Then just run the [app.py](app.py):
+Then just run:
 
 ```bash
-    $ python3 app.py
+    $ python3 -m ddns_manager
 ```
 
 ### Test
@@ -92,18 +69,18 @@ Then just run the [app.py](app.py):
 No secret here:
 
 ```bash
-    $ python -m unittest discover
+    $ python3 -m unittest discover
 ```
 
 ## Running on Docker
 
+You can run the update loop inside a docker container.
+~~The image can be found in Docker-hub.~~
+
 ### Build
 
-The latest image of this project can be found on in 
-[DockerHub](https://cloud.docker.com/u/hbontempo/repository/docker/hbontempo/dynamic-ip-updater-google-domains), 
-but you can build it yourself:
 ```bash
-    $ docker build -t dynamic-ip-updater-google-domains -f Dockerfile .
+    $ docker build -t ddns-manager -f Dockerfile .
 ```
 
 ### Run
@@ -112,12 +89,8 @@ but you can build it yourself:
 
 ```bash
     $ docker run \
-        -e USERNAME=<your_domains_username> \
-        -e PASSWORD=<your_domains_password> \
-        -e HOSTNAME=<your_domain> \
-        -e UPDATE_DELAY=<[optional]seconds_between_verifications> \
-        --restart=always \
-        -d hbontempo/dynamic-ip-updater-google-domains
+        -v PATH_CONFIG:/config/config.yml
+        -d hbontempo/ddns-manager
 ```
 
 It's a good practice to run your this container with a `--restart=always` as showed above so your container 
@@ -134,11 +107,11 @@ This project has some rules, a code of conduct, and a process for submitting
 code and pull requests. Check the [contributing](CONTRIBUTING.md) file for
 further information.
 
-## Versioning
+## ~~Versioning~~
 
-This project follows [semantic versioning][semantic_versioning] and
+~~This project follows [semantic versioning][semantic_versioning] and
 [keep a changelog][keep_a_changelog] practices. Changelog files should be
-provided in a per release basis using these practices.
+provided in a per release basis using these practices.~~
 
 ## License
 
@@ -151,6 +124,6 @@ file for further information.
 [git]: https://git-scm.com
 [git_clone_https]: https://help.github.com/articles/which-remote-url-should-i-use/#cloning-with-https-urls-recommended
 [git_clone_ssh]: https://help.github.com/articles/which-remote-url-should-i-use/#cloning-with-ssh-urls
-[contributors]: https://github.com/hbontempo-br/dynamic-ip-updater-google-domains/contributors
+[contributors]: https://github.com/hbontempo-br/ddns-manager/contributors
 [semantic_versioning]: http://semver.org/spec/v2.0.0.html
 [keep_a_changelog]: http://keepachangelog.com/en/1.0.0/
