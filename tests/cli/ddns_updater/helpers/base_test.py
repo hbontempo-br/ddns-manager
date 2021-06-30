@@ -6,7 +6,7 @@ from ddns_manager.cli.ddns_updater.helpers.base import DDNSUpdaterConfigHelper
 
 class TestDDNSUpdaterConfigHelper(unittest.TestCase):
     def test_build_signature(self):
-        # test if ConfigHelper has the method build and if that has the correct signature
+        # test if DDNSUpdaterConfigHelper has the method build and if that has the correct signature
 
         # has should have method
         method = getattr(DDNSUpdaterConfigHelper, 'build', None)

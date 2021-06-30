@@ -6,7 +6,7 @@ from ddns_manager.cli.error_handler.helpers.base import ErrorHandlerConfigHelper
 
 class TestErrorHandlerConfigHelper(unittest.TestCase):
     def test_build_signature(self):
-        # test if ConfigHelper has the method build and if that has the correct signature
+        # test if ErrorHandlerConfigHelper has the method build and if that has the correct signature
 
         # has should have method
         method = getattr(ErrorHandlerConfigHelper, 'build', None)
