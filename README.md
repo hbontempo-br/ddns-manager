@@ -1,6 +1,9 @@
+Based on [hbontempo-br/dynamic-ip-updater-google-domains](https://github.com/hbontempo-br/dynamic-ip-updater-google-domains)
+
 # ddns-manager
 [![ci](https://circleci.com/gh/hbontempo-br/ddns-manager.svg?style=shield)](https://circleci.com/gh/hbontempo-br/ddns-manager) 
 [![codecov](https://codecov.io/gh/hbontempo-br/ddns-manager/branch/master/graph/badge.svg)](https://codecov.io/gh/hbontempo-br/ddns-manager)
+[![Maintainability](https://api.codeclimate.com/v1/badges/dcceaf5e223b92659d2c/maintainability)](https://codeclimate.com/github/hbontempo-br/ddns-manager/maintainability)
 
 Easily keep your DNS records up to date with your Dynamic IP.
 
