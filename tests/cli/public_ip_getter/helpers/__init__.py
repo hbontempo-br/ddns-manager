@@ -1,1 +1,2 @@
 from .base_test import TestPublicIpGetterConfigHelper
+from .google_test import TestGoogleConfigHelper

@@ -32,7 +32,7 @@ class TestGoogleSyntheticDDNSConfigHelper(unittest.TestCase):
         }
         self.assertRaises(AttributeError, GoogleSyntheticDDNSConfigHelper.check_config, config)
 
-    def test_check_build_with_valid_config(self):
+    def test_build_with_valid_config(self):
         config = {
             'username': 'whatever',
             'password': 'whatever',
