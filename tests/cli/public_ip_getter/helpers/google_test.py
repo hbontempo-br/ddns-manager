@@ -11,6 +11,5 @@ class TestGoogleConfigHelper(unittest.TestCase):
         self.assertIsInstance(pig, GooglePublicIpGetter)
 
     def test_new_config(self):
-        expected = {}
         actual = GoogleConfigHelper.new_config()
-        self.assertDictEqual(actual, expected)
+        self.assertIsNone(actual)
