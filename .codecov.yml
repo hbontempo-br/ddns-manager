@@ -1,0 +1,14 @@
+# More information on: https://docs.codecov.com/docs/commit-status
+
+coverage:
+  status:
+    default_rules:
+      if_not_found: failure
+      if_ci_failed: error
+    project:
+      default:
+        target: 70%
+        threshold: 5%
+    patch:
+      default:
+        target: 80%
