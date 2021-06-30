@@ -1,5 +1,5 @@
 import unittest
-from typing import Callable
+from typing import Callable, NoReturn
 from ddns_manager import DDNSManager
 from ddns_manager.ddns_updater import DDNSUpdater
 from ddns_manager.public_ip_getter import PublicIPGetter
@@ -34,7 +34,7 @@ class MockDDNSUpdater(DDNSUpdater):
     def update_ddns_record_action(self, action: Callable[[str], None]):
         self.__update_ddns_record_action = action
 
-    def update_ddns_record(self, ip: str) -> None:
+    def update_ddns_record(self, ip: str) -> NoReturn:
         self.__update_ddns_record_action(ip=ip)
 
 

@@ -6,7 +6,7 @@ class ConfigHelper(ABC):
 
     @classmethod
     @abstractmethod
-    def build(cls, config: Dict):
+    def build(cls, config: Dict) -> object:
         raise NotImplementedError
 
     @staticmethod

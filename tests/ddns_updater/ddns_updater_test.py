@@ -1,4 +1,5 @@
 import unittest
+from typing import NoReturn
 
 from tests.common import *
 from ddns_manager.ddns_updater import DDNSUpdater
@@ -16,4 +17,4 @@ class TestDDNSUpdater(unittest.TestCase):
         self.assertTrue(is_abstract(method))
 
         # checks method signature
-        self.assertEqual('(self, ip: str) -> None', callable_signature(method))
+        self.assertEqual('(self, ip: str) -> NoReturn', callable_signature(method))
