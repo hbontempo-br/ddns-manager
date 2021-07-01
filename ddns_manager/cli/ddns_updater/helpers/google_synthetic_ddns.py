@@ -17,7 +17,8 @@ class GoogleSyntheticDDNSConfigHelper(DDNSUpdaterConfigHelper):
 
     @staticmethod
     def new_config():
-        return None
+        # TODO: implement interactive CLI to help generating the configuration
+        raise NotImplementedError
 
     @classmethod
     def check_config(cls, config: Dict):
