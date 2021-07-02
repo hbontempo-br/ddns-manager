@@ -1,0 +1,2 @@
+from .base_test import TestDDNSUpdaterConfigHelper
+from .google_synthetic_ddns_test import TestGoogleSyntheticDDNSConfigHelper

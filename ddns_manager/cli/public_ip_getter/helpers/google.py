@@ -12,4 +12,4 @@ class GoogleConfigHelper(PublicIpGetterConfigHelper):
 
     @staticmethod
     def new_config():
-        return {}
+        return None

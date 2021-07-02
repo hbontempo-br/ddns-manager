@@ -1,4 +1,5 @@
 from requests import request
+from typing import  NoReturn
 
 from .base import DDNSUpdater, DDNSUpdaterError
 
@@ -12,7 +13,7 @@ class GoogleSyntheticDDNSUpdater(DDNSUpdater):
         self._password = password
         self._hostname = hostname
 
-    def update_ddns_record(self, ip: str) -> None:
+    def update_ddns_record(self, ip: str) -> NoReturn:
         resp = self._req(method='post', url=self.__format_address(), params=self.__params(ip))
         if resp.status_code != 200:
             raise DDNSUpdaterError(f'Error on Google Synthetic Record update (status code: {resp.status_code})')
