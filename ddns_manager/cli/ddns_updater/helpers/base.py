@@ -6,7 +6,6 @@ from ddns_manager.ddns_updater import DDNSUpdater
 
 
 class DDNSUpdaterConfigHelper(ConfigHelper, ABC):
-
     @classmethod
     @abstractmethod
     def build(cls, config: Dict) -> DDNSUpdater:

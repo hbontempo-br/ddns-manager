@@ -6,7 +6,6 @@ from ddns_manager.error_handler import ErrorHandlerType
 
 
 class ErrorHandlerConfigHelper(ConfigHelper, ABC):
-
     @classmethod
     @abstractmethod
     def build(cls, config: Dict) -> ErrorHandlerType:

@@ -10,11 +10,11 @@ class TestDDNSUpdater(unittest.TestCase):
         # test if DDNSUpdater has the method update_ddns_record and if that has the correct signature
 
         # has should have method
-        method = getattr(DDNSUpdater, 'update_ddns_record', None)
+        method = getattr(DDNSUpdater, "update_ddns_record", None)
         self.assertTrue(callable(method))
 
         # check if is abstract
         self.assertTrue(is_abstract(method))
 
         # checks method signature
-        self.assertEqual('(self, ip: str) -> NoReturn', callable_signature(method))
+        self.assertEqual("(self, ip: str) -> NoReturn", callable_signature(method))

@@ -3,6 +3,7 @@ Based on [hbontempo-br/dynamic-ip-updater-google-domains](https://github.com/hbo
 # ddns-manager
 [![ci](https://circleci.com/gh/hbontempo-br/ddns-manager.svg?style=shield)](https://circleci.com/gh/hbontempo-br/ddns-manager) 
 [![codecov](https://codecov.io/gh/hbontempo-br/ddns-manager/branch/master/graph/badge.svg)](https://codecov.io/gh/hbontempo-br/ddns-manager)
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 [![Maintainability](https://api.codeclimate.com/v1/badges/dcceaf5e223b92659d2c/maintainability)](https://codeclimate.com/github/hbontempo-br/ddns-manager/maintainability)
 
 Easily keep your DNS records up to date with your Dynamic IP.
@@ -88,7 +89,7 @@ You can run the update loop inside a docker container.
 
 ### Run
 
-**It the recommended way**, just use the environment variables described above:
+Just mount the configuration file in the `/config/config.yml` :
 
 ```bash
     $ docker run \
@@ -99,22 +100,9 @@ You can run the update loop inside a docker container.
 It's a good practice to run your this container with a `--restart=always` as showed above so your container 
 starts running again even if a problem happens.
 
-## Contributors
-
-This project is originally designed by **[Henrique Bontempo][author]**.
-Check the [contributors][contributors] list for further information.
-
 ## Contributing
 
-This project has some rules, a code of conduct, and a process for submitting
-code and pull requests. Check the [contributing](CONTRIBUTING.md) file for
-further information.
-
-## ~~Versioning~~
-
-~~This project follows [semantic versioning][semantic_versioning] and
-[keep a changelog][keep_a_changelog] practices. Changelog files should be
-provided in a per release basis using these practices.~~
+Did you found a problem? Think that something could be improved? Just open an Issue
 
 ## License
 
@@ -123,10 +111,6 @@ file for further information.
 
 
 
-[author]: https://github.com/hbontempo-br/
 [git]: https://git-scm.com
 [git_clone_https]: https://help.github.com/articles/which-remote-url-should-i-use/#cloning-with-https-urls-recommended
 [git_clone_ssh]: https://help.github.com/articles/which-remote-url-should-i-use/#cloning-with-ssh-urls
-[contributors]: https://github.com/hbontempo-br/ddns-manager/contributors
-[semantic_versioning]: http://semver.org/spec/v2.0.0.html
-[keep_a_changelog]: http://keepachangelog.com/en/1.0.0/

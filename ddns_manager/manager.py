@@ -35,7 +35,7 @@ class DDNSManager:
     def update_loop(self, interval: int, on_error: Callable[[Exception], None]):
         while True:
             try:
-                logging.info('Starting new update routine.')
+                logging.info("Starting new update routine.")
                 self.update_ddns(update_current_ip=True)
             except Exception as e:
                 on_error(e)

@@ -5,19 +5,19 @@ from .helpers import *
 
 
 def error_handler(config: Dict) -> ErrorHandlerType:
-    helper = factory(config.get('type'))
-    eh = helper.build(config.get('details'))
+    helper = factory(config.get("type"))
+    eh = helper.build(config.get("details"))
 
     return eh
 
 
 def factory(type_str: str) -> Type[ErrorHandlerType]:
-    selector = {
-        'retry': RetryConfigHelper
-    }
+    selector = {"retry": RetryConfigHelper}
     if type_str not in selector:
         expected = selector.keys()
-        expected_str = ', '.join(expected)
-        raise AttributeError(f'Invalid on_error_behaviour type (used: {type_str} / expected: [{expected_str}])')
+        expected_str = ", ".join(expected)
+        raise AttributeError(
+            f"Invalid on_error_behaviour type (used: {type_str} / expected: [{expected_str}])"
+        )
 
     return selector[type_str]

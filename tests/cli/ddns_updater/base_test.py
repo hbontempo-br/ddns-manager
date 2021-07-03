@@ -7,27 +7,25 @@ from ddns_manager.cli.ddns_updater.helpers import GoogleSyntheticDDNSConfigHelpe
 
 class TestDDNSUpdaterCLI(unittest.TestCase):
     def test_factory_with_valid_type(self):
-        cases = [
-            ('google_synthetic', GoogleSyntheticDDNSConfigHelper)
-        ]
+        cases = [("google_synthetic", GoogleSyntheticDDNSConfigHelper)]
         for ddns_type, expected_response in cases:
             self.assertIs(expected_response, factory(ddns_type))
 
     def test_factory_with_invalid_type(self):
-        self.assertRaises(AttributeError, factory, 'invalid type')
+        self.assertRaises(AttributeError, factory, "invalid type")
 
     def test_ddns_updater_with_valid_config(self):
         cases = [
             (
                 {
-                    "type": 'google_synthetic',
+                    "type": "google_synthetic",
                     "details": {
-                        'username': 'whatever',
-                        'password': 'whatever',
-                        'hostname': 'whatever'
-                    }
+                        "username": "whatever",
+                        "password": "whatever",
+                        "hostname": "whatever",
+                    },
                 },
-                GoogleSyntheticDDNSUpdater
+                GoogleSyntheticDDNSUpdater,
             )
         ]
         for config, expected_response in cases:
