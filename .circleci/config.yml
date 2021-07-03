@@ -1,11 +1,28 @@
 version: 2.1
 orbs:
-  python: circleci/python@1.2
+  python: circleci/python@1.4
 workflows:
   ci:
     jobs:
       - build-and-test
+      - static-analisys
 jobs:
+  static-analisys:
+    docker:
+      - image: cimg/python:3.8
+    steps:
+      - checkout
+      - python/install-packages:
+          pkg-manager: pip
+          cache-version: prod
+          pip-dependency-file: requirements.txt
+      - python/install-packages:
+          pkg-manager: pip
+          cache-version: dev
+          pip-dependency-file: requirements_dev.txt
+      - run:
+          name: Run tests
+          command: pre-commit run --all-files
   build-and-test:
     docker:
       - image: cimg/python:3.8
@@ -13,8 +30,11 @@ jobs:
       - checkout
       - python/install-packages:
           pkg-manager: pip
+          cache-version: prod
+          pip-dependency-file: requirements.txt
       - python/install-packages:
           pkg-manager: pip
+          cache-version: dev
           pip-dependency-file: requirements_dev.txt
       - run:
           name: Run tests
