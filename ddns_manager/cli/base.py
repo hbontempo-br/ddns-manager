@@ -19,8 +19,8 @@ def cli():
 
 
 @cli.command()
-@click.option('--debug', type=click.types.BOOL, default=False)
-@click.argument('file', type=click.types.File(), nargs=1, envvar="CONFIG_FILE")
+@click.option("--debug", type=click.types.BOOL, default=False)
+@click.argument("file", type=click.types.File(), nargs=1, envvar="CONFIG_FILE")
 def loop(file, debug):
     """Keeps DDNS updated according to the configuration provided"""
     click.echo("")
@@ -39,21 +39,15 @@ def loop(file, debug):
         return
 
     # Setup manager
-    pig = public_ip_getter(config=config_dict['public_ip_getter'])
-    du = ddns_updater(config=config_dict['ddns_updater'])
+    pig = public_ip_getter(config=config_dict["public_ip_getter"])
+    du = ddns_updater(config=config_dict["ddns_updater"])
 
-    dm = DDNSManager(
-        ip_getter=pig,
-        ddns_updater=du
-    )
+    dm = DDNSManager(ip_getter=pig, ddns_updater=du)
 
-    eh = error_handler(config=config_dict['on_error_behaviour'])
+    eh = error_handler(config=config_dict["on_error_behaviour"])
 
     # Starting loop
-    dm.update_loop(
-        interval=config_dict['check_interval'],
-        on_error=eh
-    )
+    dm.update_loop(interval=config_dict["check_interval"], on_error=eh)
 
     click.echo(config_dict)
 
@@ -63,15 +57,15 @@ def check_config(config: Dict):
     # version = config.get('version', '0.1.0')
 
     required_keys = [
-        'public_ip_getter',
-        'ddns_updater',
-        'check_interval',
-        'on_error_behaviour'
+        "public_ip_getter",
+        "ddns_updater",
+        "check_interval",
+        "on_error_behaviour",
     ]
 
     for key in required_keys:
         if key not in config:
-            raise AttributeError(f'Invalid configuration file. (Missing \'{key}\' value)')
+            raise AttributeError(f"Invalid configuration file. (Missing '{key}' value)")
 
-    if type(config['check_interval']) != int:
+    if type(config["check_interval"]) != int:
         raise AttributeError("Parameter 'check_interval' should be a integer number")

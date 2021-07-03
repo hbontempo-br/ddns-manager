@@ -6,7 +6,6 @@ class PublicIPGetterError(Exception):
 
 
 class PublicIPGetter(ABC):
-
     @abstractmethod
     def get_current_ip(self) -> str:
         raise NotImplementedError

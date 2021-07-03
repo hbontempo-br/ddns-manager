@@ -5,7 +5,6 @@ from ddns_manager.public_ip_getter.google import GooglePublicIpGetter
 
 
 class GoogleConfigHelper(PublicIpGetterConfigHelper):
-
     @classmethod
     def build(cls, config: Dict) -> GooglePublicIpGetter:
         return GooglePublicIpGetter()
