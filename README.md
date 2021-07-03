@@ -89,7 +89,7 @@ You can run the update loop inside a docker container.
 
 ### Run
 
-**It the recommended way**, just use the environment variables described above:
+Just mount the configuration file in the `/config/config.yml` :
 
 ```bash
     $ docker run \
@@ -100,22 +100,9 @@ You can run the update loop inside a docker container.
 It's a good practice to run your this container with a `--restart=always` as showed above so your container 
 starts running again even if a problem happens.
 
-## Contributors
-
-This project is originally designed by **[Henrique Bontempo][author]**.
-Check the [contributors][contributors] list for further information.
-
 ## Contributing
 
-This project has some rules, a code of conduct, and a process for submitting
-code and pull requests. Check the [contributing](CONTRIBUTING.md) file for
-further information.
-
-## ~~Versioning~~
-
-~~This project follows [semantic versioning][semantic_versioning] and
-[keep a changelog][keep_a_changelog] practices. Changelog files should be
-provided in a per release basis using these practices.~~
+Did you found a problem? Think that something could be improved? Just open an Issue
 
 ## License
 
@@ -124,10 +111,6 @@ file for further information.
 
 
 
-[author]: https://github.com/hbontempo-br/
 [git]: https://git-scm.com
 [git_clone_https]: https://help.github.com/articles/which-remote-url-should-i-use/#cloning-with-https-urls-recommended
 [git_clone_ssh]: https://help.github.com/articles/which-remote-url-should-i-use/#cloning-with-ssh-urls
-[contributors]: https://github.com/hbontempo-br/ddns-manager/contributors
-[semantic_versioning]: http://semver.org/spec/v2.0.0.html
-[keep_a_changelog]: http://keepachangelog.com/en/1.0.0/
