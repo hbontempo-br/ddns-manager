@@ -1,18 +1,27 @@
 """Setup script for ddns-manager"""
 
 import os.path
+from os import environ
+
 from setuptools import setup, find_packages
 
 # The directory containing this file
 HERE = os.path.abspath(os.path.dirname(__file__))
 
 # The text of the README file
-with open(os.path.join(HERE, "README.md")) as fid:
-    README = fid.read()
+with open(os.path.join(HERE, "README.md")) as f:
+    README = f.read()
+
+# Parsing requirements files
+with open(os.path.join(HERE, "requirements.txt")) as f:
+    REQUIREMENTS = f.read().splitlines()
+
+# Extracting version from environment variable
+VERSION = environ.get("VERSION")
 
 setup(
     name="ddns-manager",
-    version="0.1.1",
+    version=VERSION,
     description="Keep your ddns up to date",
     long_description=README,
     long_description_content_type="text/markdown",
@@ -27,11 +36,11 @@ setup(
     ],
     packages=find_packages(),
     include_package_data=True,
-    install_requires=["click", "PyYAML", "requests", "retry"],
+    install_requires=REQUIREMENTS,
     entry_points={
         "console_scripts": [
             "ddns_manager=ddns_manager.__main__:cli",
         ]
     },
-    python_requires=3.6,
+    python_requires=">=3.6",
 )
