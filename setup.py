@@ -18,6 +18,8 @@ with open(os.path.join(HERE, "requirements.txt")) as f:
 
 # Extracting version from environment variable
 VERSION = environ.get("VERSION")
+if VERSION == "":
+    raise EnvironmentError("Invalid VERSION")
 
 setup(
     name="ddns-manager",

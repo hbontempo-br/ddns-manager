@@ -1,6 +1,8 @@
 version: 2.1
 orbs:
   python: circleci/python@1.4
+
+
 workflows:
   ci:
     jobs:
@@ -10,6 +12,10 @@ workflows:
     jobs:
       - pypi-deploy:
           filters:
+            # ignore any commit on any branch by default
+            branches:
+              ignore: /.*/
+            # only act on version tags
             tags:
               only: /v[0-9]+(\.[0-9]+)*(-.*)*/
 jobs:
