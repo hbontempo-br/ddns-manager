@@ -19,7 +19,7 @@ workflows:
               ignore: /.*/
             # only act on version tags
             tags:
-              only: /^v.*/
+              only: /^v*/
 jobs:
   static-analysis:
     executor: python/default
