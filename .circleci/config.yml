@@ -54,11 +54,8 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Set $SEMMANTIC_VERSION_TAG from GIT TAG
-          command:  export SEMMANTIC_VERSION_TAG=$(echo <<pipeline.git.tag>> | sed -e "s/^v//" | sed -e "s/^\.//")
-      - run:
           name: build
-          command: VERSION=$SEMMANTIC_VERSION_TAG python3 setup.py sdist bdist_wheel
+          command: VERSION=$(echo <<pipeline.git.tag>> | sed -e "s/^v//" | sed -e "s/^\.//") python3 setup.py sdist bdist_wheel
       - run:
           name: init .pypirc
           command: |
