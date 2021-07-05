@@ -14,3 +14,9 @@ local.env
 .coverage
 coverage.xml
 config
+
+# Deployment
+build
+dist
+ddns_manager.egg-info
+.pypirc

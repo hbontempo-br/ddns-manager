@@ -1,40 +1,67 @@
 version: 2.1
 orbs:
   python: circleci/python@1.4
+
+
 workflows:
   ci:
     jobs:
       - tests
       - static-analysis
+  cd:
+    jobs:
+      - pypi-deploy:
+          context:
+            - PERSONAL_PROJECTS
+          filters:
+            # ignore any commit on any branch by default
+            branches:
+              ignore: /.*/
+            # only act on version tags
+            tags:
+              only: /^v.+/
 jobs:
   static-analysis:
-    docker:
-      - image: cimg/python:3.8
+    executor: python/default
     steps:
       - checkout
-      - python/install-packages:
-          pkg-manager: pip
-          cache-version: dev
-          pip-dependency-file: requirements_dev.txt
+      - run:
+          name: install pre-commit
+          command: pip install pre-commit==2.9.2
       - run:
           name: Run static-analysis
           command: pre-commit run --all-files
   tests:
-    docker:
-      - image: cimg/python:3.8
+    executor: python/default
     steps:
       - checkout
       - python/install-packages:
           pkg-manager: pip
           cache-version: prod
           pip-dependency-file: requirements.txt
-      - python/install-packages:
-          pkg-manager: pip
-          cache-version: dev
-          pip-dependency-file: requirements_dev.txt
+      - run:
+          name: install coverage
+          command: pip install coverage==5.5
       - run:
           name: Run tests
           command: coverage run -m unittest discover
       - run:
           name: Upload coverage result
           command: bash <(curl -s https://codecov.io/bash)
+
+  pypi-deploy:
+    executor: python/default
+    steps:
+      - checkout
+      - run:
+          name: build
+          command: VERSION=$(echo <<pipeline.git.tag>> | sed -e "s/^v//" | sed -e "s/^\.//") python3 setup.py sdist bdist_wheel
+      - run:
+          name: init .pypirc
+          command: |
+            echo -e "[pypi]" >> ~/.pypirc
+            echo -e "username = __token__" >> ~/.pypirc
+            echo -e "password = $PYPI_PASSWORD" >> ~/.pypirc
+      - run:
+          name: publish
+          command: pip install twine && twine upload dist/*
