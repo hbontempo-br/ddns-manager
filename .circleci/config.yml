@@ -1,13 +1,18 @@
 version: 2.1
 orbs:
   python: circleci/python@1.4
+  docker: circleci/docker@1.6.0
+
+# -----------------------------------------
 
 
 workflows:
+
   ci:
     jobs:
       - tests
       - static-analysis
+
   cd:
     jobs:
       - pypi-deploy:
@@ -20,7 +25,21 @@ workflows:
             # only act on version tags
             tags:
               only: /^v.+/
+      - docker-deploy:
+          context:
+            - PERSONAL_PROJECTS
+          filters:
+            # ignore any commit on any branch by default
+            branches:
+              ignore: /.*/
+            # only act on version tags
+            tags:
+              only: /^v.+/
+
+# -----------------------------------------
+
 jobs:
+
   static-analysis:
     executor: python/default
     steps:
@@ -31,6 +50,7 @@ jobs:
       - run:
           name: Run static-analysis
           command: pre-commit run --all-files
+
   tests:
     executor: python/default
     steps:
@@ -65,3 +85,22 @@ jobs:
       - run:
           name: publish
           command: pip install twine && twine upload dist/*
+
+  docker-deploy:
+    executor: docker/machine
+    environment:
+      - DOCKERHUB_LOGIN: hbontempo
+    steps:
+      - checkout
+      - docker/check:
+          docker-username: DOCKERHUB_LOGIN
+          docker-password: DOCKERHUB_PASSWORD
+      - docker/build:
+          cache_from: hbontempo/ddns-manager:latest
+          image: hbontempo/ddns-manager
+          tag: 'latest,$(echo <<pipeline.git.tag>> | sed -e "s/^v//" | sed -e "s/^\.//")'
+      - docker/push:
+          image: hbontempo/ddns-manager
+          tag: 'latest,$(echo <<pipeline.git.tag>> | sed -e "s/^v//" | sed -e "s/^\.//")'
+      - docker/update-description:
+          image: hbontempo/ddns-manager
