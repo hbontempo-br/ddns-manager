@@ -1,11 +1,12 @@
 Based on [hbontempo-br/dynamic-ip-updater-google-domains](https://github.com/hbontempo-br/dynamic-ip-updater-google-domains)
 
 # ddns-manager
-[![ci](https://circleci.com/gh/hbontempo-br/ddns-manager.svg?style=shield)](https://circleci.com/gh/hbontempo-br/ddns-manager) 
-[![codecov](https://codecov.io/gh/hbontempo-br/ddns-manager/branch/master/graph/badge.svg)](https://codecov.io/gh/hbontempo-br/ddns-manager)
-[![Maintainability](https://api.codeclimate.com/v1/badges/dcceaf5e223b92659d2c/maintainability)](https://codeclimate.com/github/hbontempo-br/ddns-manager/maintainability)
-[![PyPI](https://img.shields.io/pypi/v/ddns-manager)](https://pypi.org/project/ddns-manager/)
-![GitHub](https://img.shields.io/github/license/hbontempo-br/ddns-manager)
+[![ci](https://img.shields.io/circleci/build/gh/hbontempo-br/ddns-manager/master?logo=circleci)](https://circleci.com/gh/hbontempo-br/ddns-manager) 
+[![codecov](https://img.shields.io/codecov/c/gh/hbontempo-br/ddns-manager?color=ff69b4&logo=codecov)](https://codecov.io/gh/hbontempo-br/ddns-manager)
+[![Maintainability](https://img.shields.io/codeclimate/maintainability/hbontempo-br/ddns-manager?logo=codeclimate&color=lightgray)](https://codeclimate.com/github/hbontempo-br/ddns-manager/maintainability)
+
+[![PyPI](https://img.shields.io/pypi/v/ddns-manager?logo=pypi&color=006dad)](https://pypi.org/project/ddns-manager/)
+[![Dockerhub](https://img.shields.io/docker/v/hbontempo/ddns-manager?label=docker&logo=docker&color=27343b)](https://hub.docker.com/r/hbontempo/ddns-manager)
 
 Easily keep your DNS records up to date with your Dynamic IP.
 
